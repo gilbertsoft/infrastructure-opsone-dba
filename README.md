@@ -17,7 +17,8 @@ included.
 }
 ```
 
-SSH to the website and run the following commands:
+SSH into the website and run the following commands in your user home (copy
+all lines and press enter):
 
 * `git clone https://github.com/gilbertsoft/infrastructure-opsone-dba.git tmp/dba`
 * `mv tmp/dba/.git .git`
