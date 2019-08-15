@@ -1,6 +1,7 @@
 /log/*
 /tmp/*
 /backup/*
+/cnf/nginx-*.conf
 /cnf/tags
 /.zprofile
 /.profile
