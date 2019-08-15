@@ -35,14 +35,16 @@ mv www-new www
 
 # Test for local changes
 
-echo "**********************************************************************"
-echo "Check for local changes, read the following line to ensure no changes:"
-echo "**********************************************************************"
+echo ""
+echo "***************************************************************************"
+echo "* Check for local changes, read the following lines to ensure no changes: *"
+echo "***************************************************************************"
 echo ""
 
 git branch -v
 git status
 
 echo ""
-echo "**********************************************************************"
+echo "***************************************************************************"
+echo ""
 echo "Installation finished!"
