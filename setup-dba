@@ -20,7 +20,7 @@
 composer create-project phpmyadmin/phpmyadmin www-new --no-dev
 
 # Delete last backup
-if [ -d "www-old" ] rm -fr www-old
+[ -d "www-old" ] && rm -fr www-old
 
 # Backup current version
 mv www www-old
