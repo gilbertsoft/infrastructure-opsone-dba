@@ -17,3 +17,6 @@
 /.cache/*
 /.config/*
 /.local/*
+/www/*
+!/www/config.inc.php
+/www-old/*
