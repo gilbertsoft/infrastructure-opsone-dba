@@ -21,3 +21,4 @@
 /.local/*
 /www/*
 /www-old-*/*
+/config.inc.php
