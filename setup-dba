@@ -25,7 +25,7 @@ git pull
 
 # Install current version to www-new and link configuration
 composer create-project phpmyadmin/phpmyadmin www-new --no-dev
-ln config.inc.php www-new/config.inc.php
+ln -s config.inc.php www-new/config.inc.php
 
 # Backup current version
 mv www www-old-`date +%Y%m%d%H%M`
