@@ -31,3 +31,7 @@ all lines and press enter):
 To update an existing installation run:
 
 * `setup-dba`
+
+## License
+
+GPL-3.0 or later
