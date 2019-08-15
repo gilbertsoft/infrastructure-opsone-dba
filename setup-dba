@@ -35,3 +35,5 @@ git pull
 # Test for local changes
 git branch -v
 git status
+
+echo "Installation finished!"
