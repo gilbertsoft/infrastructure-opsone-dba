@@ -1,12 +1,12 @@
 # infrastructure-opsone-dba (phpMyAdmin)
 
-Latest phpMyAdmin for installation on an (OpsOne Managed Server PaaS)<https://opsone.ch/hosting/managed-server>.
+Latest phpMyAdmin for installation on an [OpsOne Managed Server PaaS](https://opsone.ch/hosting/managed-server).
 
 ## Installation
 
 On a fresh website add the following configuration to the website's
 `Custom JSON` configuration. Create a new secret e.g. on
-(RandomKeygen)<https://randomkeygen.com/#504_wpa>. Make sure no `"` is
+[RandomKeygen](https://randomkeygen.com/#504_wpa). Make sure no `"` is
 included.
 
 ```json
