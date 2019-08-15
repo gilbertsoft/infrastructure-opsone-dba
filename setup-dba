@@ -28,9 +28,6 @@ mv www www-old
 # Go live
 mv www-new www
 
-# Remove configuration
-rm www/config.inc.php
-
 # Reset to master and restore configuration
 git reset --hard origin/master
 git pull
