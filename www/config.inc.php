@@ -40,7 +40,7 @@ $cfg['Servers'][$i]['export_templates'] = 'pma__export_templates';
 
 /* End of servers configuration */
 
-$cfg['blowfish_secret'] = '/z>=ByP2e,imVfn7zjhl+:A5Q(){\\t&R';
+$cfg['blowfish_secret'] = $_SERVER['BLOWFISH_SECRET'];
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 $cfg['BZipDump'] = false;
