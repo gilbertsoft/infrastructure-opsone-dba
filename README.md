@@ -32,7 +32,7 @@ Adapt `config.inc.php` to your needs.
 
 To update an existing installation run:
 
-* `setup-dba`
+* `update-dba`
 
 ### Rollback
 
