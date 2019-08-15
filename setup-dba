@@ -16,24 +16,33 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Install current version to www-new
-composer create-project phpmyadmin/phpmyadmin www-new --no-dev
+# Reset to master
+git reset --hard origin/master
+git pull
 
-# Delete last backup
-[ -d "www-old" ] && rm -fr www-old
+# Create configuration from dist
+[ -f "config.inc.php" ] || cp config.dist.inc.php config.inc.php
+
+# Install current version to www-new and link configuration
+composer create-project phpmyadmin/phpmyadmin www-new --no-dev
+ln config.inc.php www-new/config.inc.php
 
 # Backup current version
-mv www www-old
+mv www www-old-`date +%Y%m%d%H%M`
 
 # Go live
 mv www-new www
 
-# Reset to master and restore configuration
-git reset --hard origin/master
-git pull
-
 # Test for local changes
+
+echo "**********************************************************************"
+echo "Check for local changes, read the following line to ensure no changes:"
+echo "**********************************************************************"
+echo ""
+
 git branch -v
 git status
 
+echo ""
+echo "**********************************************************************"
 echo "Installation finished!"

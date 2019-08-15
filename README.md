@@ -26,11 +26,23 @@ all lines and press enter):
 * `git reset --hard`
 * `setup-dba`
 
+Adapt `config.inc.php` to your needs.
+
 ## Update
 
 To update an existing installation run:
 
 * `setup-dba`
+
+### Rollback
+
+Every update creates a backup of the current version to `www-old-` with the
+current date and time added. In case of an error you can rename or delete
+the webfolder `www` and rename a backup folder to `www`.
+
+### Cleanup
+
+You can delete the backups as needed to free some disk space.
 
 ## License
 
