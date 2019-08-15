@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+#
+# Install or update phpMyAdmin
+# Copyright (C) 2019  Gilbertsoft
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Install current version to www-new
+composer create-project phpmyadmin/phpmyadmin www-new --no-dev
+
+# Delete last backup
+if [ -d "www-old" ] rm -fr www-old
+
+# Backup current version
+mv www www-old
+
+# Go live
+mv www-new www
+
+# Remove configuration
+rm www/config.inc.php
+
+# Reset to master and restore configuration
+git reset --hard origin/master
+git pull
+
+# Test for local changes
+git branch -v
+git status
