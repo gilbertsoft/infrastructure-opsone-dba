@@ -6,8 +6,8 @@ Latest phpMyAdmin for installation on an [OpsOne Managed Server PaaS](https://op
 
 On a fresh website add the following configuration to the website's
 `Custom JSON` configuration. Create a new secret e.g. on
-[RandomKeygen](https://randomkeygen.com/#504_wpa). Make sure no `"` is
-included.
+[RandomKeygen](https://randomkeygen.com/#504_wpa), make sure no `"` is
+included and paste it enclosed by the two `"` to the JSON configuration.
 
 ```json
 {
