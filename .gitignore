@@ -22,4 +22,5 @@
 /www/*
 /www-old-*/*
 /.jobregistered
+/.wget-hsts
 /config.inc.php
