@@ -39,6 +39,7 @@ else
     # Update stable version
     cd www
     git pull -q origin STABLE
+    cd ..
 fi
 
 # Register cron job
