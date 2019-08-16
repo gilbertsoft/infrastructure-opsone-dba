@@ -42,7 +42,7 @@ else
 fi
 
 # Register cron job
-if [ ! -f ".cronregistered" ]; then
+if [ ! -f ".jobregistered" ]; then
     (crontab -l && echo "\t0\t1\t*\t*\t*\t/home/$USER/update-dba >/dev/null") | crontab -
-    touch .cronregistered
+    touch .jobregistered
 fi
