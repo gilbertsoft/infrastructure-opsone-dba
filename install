@@ -45,7 +45,7 @@ if [ ! -d ".git" ]; then
 fi
 
 # Reset to master and update
-git reset --hard origin/master
+git reset -q --hard origin/master
 git pull -q origin master
 
 # Run setup script

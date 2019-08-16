@@ -17,7 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Reset to master and update
-git reset --hard origin/master
+git reset -q --hard origin/master
 git pull -q origin master
 
 # Run setup script
