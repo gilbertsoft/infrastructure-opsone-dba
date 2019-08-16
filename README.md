@@ -25,7 +25,7 @@ Updates are automatically done by a daily cron job.
 For a manual update ssh into the website and run the following command in your
 user home directory:
 
-* `update`
+* `./update`
 
 ## License
 
