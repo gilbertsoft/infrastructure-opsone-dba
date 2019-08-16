@@ -18,7 +18,10 @@
 
 # Delete existing git repository
 if [ -d ".git" ]; then
-    echo "A git repository does already exist. How would you proceed? Press 'd' to delete the existing repository, 'c' to continue the installtion with the existing repository or any key to abort:"
+    echo "A git repository does already exist. How would you like to proceed? Press"
+    echo "  'd' to delete the existing repository"
+    echo "  'c' to continue the installtion with the existing repository"
+    echo "Any other key to abort the installation"
     read INPUT_STRING
     case $INPUT_STRING in
         d)
