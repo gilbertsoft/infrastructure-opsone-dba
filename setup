@@ -44,7 +44,7 @@ fi
 
 # Register cron job
 if [ ! -f ".jobregistered" ]; then
-    (crontab -l && echo "\t0\t1\t*\t*\t*\t/home/$USER/update-dba >/dev/null") | crontab -
+    (crontab -l && echo "\t0\t1\t*\t*\t*\t/home/$USER/update >/dev/null") | crontab -
     touch .jobregistered
 fi
 
