@@ -1,22 +1,40 @@
 # infrastructure-opsone-dba (phpMyAdmin)
 
-Latest phpMyAdmin for installation on an [OpsOne Managed Server PaaS](https://opsone.ch/hosting/managed-server).
+Stable phpMyAdmin for installation on an [OpsOne Managed Server PaaS](https://opsone.ch/hosting/managed-server).
 
 ## Installation
 
-In the website details from the cockpit set `ENV` to `PROD` and `Type` to
-`php72` (of course other compatible values are possible too). Check the other
-configuration values and click the `Save` button.
+### Website configuration
 
-Then ssh into the website and run the following command in your user home
-directory:
+Browse to the [OpsOne Cockpit](https://cockpit.opsone.ch) and update the
+settings to the following configuration:
+
+* `ENV` to `PROD`
+* `Type` to `php72` (PHP 7.1.3 or higher is required)
+* `DB type` to `mysql`
+* `DB password` click `Generate`
+* `Let's Encrypt` checked
+* `Tags` to what you like to have
+* Click the `Save` button
+
+### Installation over ssh
+
+Open a ssh terminal to the website and run the following command in your user
+home directory:
 
 * `wget https://github.com/gilbertsoft/infrastructure-opsone-dba/raw/master/install && chmod +x install && ./install`
 
-Now the instance is running and accessible over http(s).
+or for a composer based installation (see <https://github.com/gilbertsoft/infrastructure-opsone-dba-installer>)
 
-Finally you can adapt `config.inc.php` in the home directory to your needs
-but it is running out of the box with some default settings.
+* `composer create-project gilbertsoft/dba-opsone`
+
+Now the phpMyAdmin instance is running and accessible over http(s).
+
+### Customize the configuration
+
+To customize the configuration change the `config.inc.php` in the user home
+directory to your needs. A out of the box running preconfiguration is already
+created.
 
 ## Update
 
