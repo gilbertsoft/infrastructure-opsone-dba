@@ -17,30 +17,32 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Create configuration from dist
-[ -f "config.inc.php" ] || cp config.dist.inc.php config.inc.php
+if [ ! -f "config.inc.php" ]; then
+    cp config.dist.inc.php config.inc.php
+    sed -i -e "s/add_new_secret_here/`pwgen -s 32 1`/g" config.inc.php
+fi
 
-# Install current version to www-new and link configuration
-composer create-project phpmyadmin/phpmyadmin www-new --no-dev
-ln -rs config.inc.php www-new/config.inc.php
+# Install or update phpMyAdmin from github
+if [ ! -d "www/.git" ]; then
+    # Install stable version to www-new
+    git clone -q --depth=1 --branch=STABLE https://github.com/phpmyadmin/phpmyadmin.git www-new
 
-# Backup current version
-mv www www-old-`date +%Y%m%d%H%M`
+    # Symlink configuration
+    ln -rs config.inc.php www-new/config.inc.php
 
-# Go live
-mv www-new www
+    # Backup current version
+    mv www www-old-`date +%Y%m%d%H%M`
 
-# Test for local changes
+    # Go live
+    mv www-new www
+else
+    # Update stable version
+    cd www
+    git pull -q origin STABLE
+fi
 
-echo ""
-echo "***************************************************************************"
-echo "* Check for local changes, read the following lines to ensure no changes: *"
-echo "***************************************************************************"
-echo ""
-
-git branch -v
-git status
-
-echo ""
-echo "***************************************************************************"
-echo ""
-echo "Installation finished!"
+# Register cron job
+if [ ! -f ".cronregistered" ]; then
+    (crontab -l && echo "\t0\t1\t*\t*\t*\t/home/$USER/update-dba >/dev/null") | crontab -
+    touch .cronregistered
+fi
