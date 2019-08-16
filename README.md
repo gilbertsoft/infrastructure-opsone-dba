@@ -11,7 +11,7 @@ and run the following command in your user home directory:
 
 * `wget https://github.com/gilbertsoft/infrastructure-opsone-dba/raw/master/install && chmod +x install && ./install`
 
-Now the instance is running and accessible by http. You can adapt
+Now the instance is running and accessible over http(s). You can adapt
 `config.inc.php` to your needs but it is running out of the box with some
 default settings.
 
