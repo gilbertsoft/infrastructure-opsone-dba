@@ -47,4 +47,4 @@ if [ ! -f ".jobregistered" ]; then
     touch .jobregistered
 fi
 
-echo "phpMyAdmin in installed and up to date now!"
+echo "phpMyAdmin is installed and up to date now!"
