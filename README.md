@@ -36,7 +36,7 @@ To customize the configuration change the `config.inc.php` in the user home
 directory to your needs. A out of the box running preconfiguration is already
 created.
 
-## Update
+### Update
 
 Updates are automatically done by a daily cron job.
 
@@ -45,6 +45,29 @@ user home directory:
 
 * `./update`
 
+## Contact & Communication
+
+### Contributing
+
+Feel free to fork this project and create a pull request when you're happy
+with your changes.
+
+### Bug reporting
+
+Please open an [issue at github](https://github.com/gilbertsoft/infrastructure-opsone-dba-installer/issues)
+and describe your problem.
+
 ## License
 
-GPL-3.0 or later
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
