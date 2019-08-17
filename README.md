@@ -54,7 +54,7 @@ with your changes.
 
 ### Bug reporting
 
-Please open an [issue at github](https://github.com/gilbertsoft/infrastructure-opsone-dba-installer/issues)
+Please open an [issue at github](https://github.com/gilbertsoft/infrastructure-opsone-dba/issues)
 and describe your problem.
 
 ## License
