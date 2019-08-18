@@ -43,7 +43,7 @@ if [ ! -d "www/.git" ]; then
     mv www-new www
 else
     # Change to web directory
-    pushd www
+    cd www
 
     if [ "$1" = "init" ]; then
         # Reset to STABLE and update
@@ -54,7 +54,7 @@ else
         git pull -q
     fi
 
-    popd
+    cd ..
 fi
 
 # Register cron job
