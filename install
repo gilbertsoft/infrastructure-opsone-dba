@@ -17,7 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 n=$(readlink -f ${0})
-if [ "$(basename ${0})" == "install" ]; then
+if [ "$(basename ${0})" = "install" ]; then
     # Create tmp copy to prevent update errors
     cp -p ${n} ${n}.exec
     chmod +x ${n}.exec
