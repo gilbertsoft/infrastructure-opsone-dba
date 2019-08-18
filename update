@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Install or update phpMyAdmin
+# Update phpMyAdmin
 # Copyright (C) 2019  Gilbertsoft
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,9 +16,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Reset to master and update
-git reset -q --hard origin/master
-git pull -q origin master
+n=$(readlink -f ${0})
+if [ "$(basename ${0})" == "update" ]; then
+    # Create tmp copy to prevent update errors
+    cp -p ${n} ${n}.exec
+    chmod +x ${n}.exec
+    exec ${n}.exec
+else
+    # Reset and update
+    git reset -q --hard
+    git pull -q
 
-# Run setup script
-./setup
+    # Run setup script
+    . ./setup
+
+    # Clean up tmp .exec file
+    if [ -f ${n} ]; then
+        rm -f ${n}
+    fi
+fi

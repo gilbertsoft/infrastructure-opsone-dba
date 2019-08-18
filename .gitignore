@@ -25,3 +25,5 @@
 /.jobregistered
 /.wget-hsts
 /config.inc.php
+/install.exec
+/update.exec

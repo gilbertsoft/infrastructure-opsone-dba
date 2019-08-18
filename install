@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Install phpMyAdmin
+# Clone gilbertsoft/infrastructure-opsone-dba from github to user home
 # Copyright (C) 2019  Gilbertsoft
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,40 +16,47 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Delete existing git repository
-if [ -d ".git" ]; then
-    echo "A git repository does already exist. How would you like to proceed? Press"
-    echo "  'd' to delete the existing repository"
-    echo "  'c' to continue the installtion with the existing repository"
-    echo "Any other key to abort the installation"
-    read INPUT_STRING
-    case $INPUT_STRING in
-        d)
-            rm -fr .git
-            ;;
-        c)
-            ;;
-        *)
-            exit 127
-            ;;
-    esac
+n=$(readlink -f ${0})
+if [ "$(basename ${0})" == "install" ]; then
+    # Create tmp copy to prevent update errors
+    cp -p ${n} ${n}.exec
+    chmod +x ${n}.exec
+    exec ${n}.exec
+else
+    # Change directory to user home
+    cd ~
+
+    # Check for an existing git repository
+    if [ -d ".git" ]; then
+        echo "*****************************************************************************"
+        echo "* A git repository does already exist, the installer will use the current   *"
+        echo "* branch to continue the setup process.                                     *"
+        echo "*                                                                           *"
+        echo "* If you like to do a fresh installation, run the following command:        *"
+        echo "*                                                                           *"
+        echo "*  'rm -fr .git && ./installer'                                             *"
+        echo "*                                                                           *"
+        echo "*****************************************************************************"
+
+        # Reset hard and update
+        git reset -q --hard
+        git pull -q
+    else
+        # Clone gilbertsoft/infrastructure-opsone-dba master branch from github
+        git clone -q --depth=1 --branch=master https://github.com/gilbertsoft/infrastructure-opsone-dba.git tmp/dba
+
+        # Move .git to current directory
+        mv tmp/dba/.git .git
+
+        # Delete tmp/dba
+        rm -fr tmp/dba
+    fi
+
+    # Run setup script
+    . ./setup init
+
+    # Clean up tmp .exec file
+    if [ -f ${n} ]; then
+        rm -f ${n}
+    fi
 fi
-
-# Install gilbertsoft/infrastructure-opsone-dba from github
-if [ ! -d ".git" ]; then
-    # Install stable version to tmp/dba
-    git clone -q --depth=1 --branch=master https://github.com/gilbertsoft/infrastructure-opsone-dba.git tmp/dba
-
-    # Move .git to home
-    mv tmp/dba/.git .git
-
-    # Delete tmp/dba
-    rm -fr tmp/dba
-fi
-
-# Reset to master and update
-git reset -q --hard origin/master
-git pull -q origin master
-
-# Run setup script
-./setup
