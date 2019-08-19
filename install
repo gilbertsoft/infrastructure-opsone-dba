@@ -42,8 +42,8 @@ else
         git reset -q --hard
         git pull -q
     else
-        # Clone gilbertsoft/infrastructure-opsone-dba master branch from github
-        git clone -q --depth=1 --branch=master https://github.com/gilbertsoft/infrastructure-opsone-dba.git tmp/dba
+        # Clone gilbertsoft/infrastructure-opsone-dba stable branch from github
+        git clone -q --depth=1 --branch=stable https://github.com/gilbertsoft/infrastructure-opsone-dba.git tmp/dba
 
         # Move .git to current directory
         mv tmp/dba/.git .git

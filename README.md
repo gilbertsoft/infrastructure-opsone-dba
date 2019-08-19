@@ -22,7 +22,7 @@ settings to the following configuration:
 Open a ssh terminal to the website and run the following command in your user
 home directory:
 
-* `wget https://github.com/gilbertsoft/infrastructure-opsone-dba/raw/master/install && chmod +x install && ./install`
+* `wget https://github.com/gilbertsoft/infrastructure-opsone-dba/raw/stable/install && chmod +x install && ./install`
 
 or for a composer based installation (see <https://github.com/gilbertsoft/infrastructure-opsone-dba-installer>)
 
