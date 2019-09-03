@@ -53,7 +53,7 @@ else
     fi
 
     # Run setup script
-    . ./setup init
+    . ./setup
 
     # Clean up tmp .exec file
     if [ -f ${n} ]; then
