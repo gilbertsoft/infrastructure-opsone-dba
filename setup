@@ -28,34 +28,19 @@ if [ ! -f "config.inc.php" ]; then
     sed -i -e "s/add_new_secret_here/`pwgen -s 32 1`/g" config.inc.php
 fi
 
-# Install or update phpMyAdmin
-if [ ! -d "www/.git" ]; then
-    # Clone stable version from github to www-new
-    git clone -q --depth=1 --branch=STABLE https://github.com/phpmyadmin/phpmyadmin.git www-new
+# Install stable version to www-new
+composer create-project --repository-url=https://www.phpmyadmin.net/packages.json --no-dev phpmyadmin/phpmyadmin www-new
 
-    # Symlink configuration
-    ln -rs config.inc.php www-new/config.inc.php
+# Symlink configuration
+ln -rs config.inc.php www-new/config.inc.php
 
-    # Backup current version
+# Backup existing www on first install
+if [ ! -f "www/config.inc.php" ]; then
     mv www www-old-`date +%Y%m%d%H%M`
-
-    # Go live
-    mv www-new www
-else
-    # Change to web directory
-    cd www
-
-    if [ "$1" = "init" ]; then
-        # Reset to STABLE and update
-        git reset -q --hard origin/STABLE
-        git pull -q origin STABLE
-    else
-        # Update current branch
-        git pull -q
-    fi
-
-    cd ..
 fi
+
+# Go live
+mv www-new www
 
 # Register cron job
 if [ ! -f ".jobregistered" ]; then
